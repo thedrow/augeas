@@ -1,4 +1,5 @@
 sudo: false
+cache: ccache
 addons:
   apt:
     packages:
@@ -14,4 +15,4 @@ notifications:
   irc:
     channels:
       - "irc.freenode.org#augeas"
-script: ./configure && make && make check && ./src/try valgrind
+script: ./configure && make -j 2 && make check -j 2 && ./src/try valgrind
